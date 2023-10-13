@@ -1,13 +1,13 @@
 ---
 # Banner
 banner:
-  title: "The Ultimate Starter Template You Need To Start Your Hugo Project"
-  content: "Hugoplate is a free starter template built with Hugo and TailwindCSS, providing everything you need to jumpstart your Hugo project and save valuable time."
+  title: "The Website should show up here"
+  content: "Blank Space"
   image: "/images/banner.png"
   button:
     enable: true
-    label: "Get Started For Free"
-    link: "https://github.com/zeon-studio/hugoplate"
+    label: "Register Now"
+    link: "/register"
 
 # Features
 features:
@@ -22,9 +22,8 @@ features:
       - "SEO-optimized for better search engine rankings"
       - "**Open-source and free** for personal and commercial use"
     button:
-      enable: false
-      label: "Get Started Now"
-      link: "#"
+      label: "Register Now"
+      link: "/register"
 
   - title: "Discover the Key Features Of Hugo"
     image: "/images/service-2.png"
@@ -35,8 +34,8 @@ features:
       - "UI-agnostic: Supports React, Preact, Svelte, Vue, Solid, Lit and more."
     button:
       enable: true
-      label: "Get Started Now"
-      link: "https://github.com/zeon-studio/hugoplate"
+      label: "Register Now"
+      link: "/register"
 
   - title: "The Top Reasons to Choose Hugo for Your Hugo Project"
     image: "/images/service-3.png"

@@ -1,36 +1,21 @@
 #################### default parameters ################################
-# favicon
-favicon = "images/favicon.png"
-# logo
+favicon = "images/logo.png"
 logo = "images/logo.png"
-logo_darkmode = "images/logo-darkmode.png"
-# use `px` or `x` with logo_width, example: "100px".
-# Note: logo_width is not work with .svg file
-logo_width = "160px"
+logo_darkmode = "images/logo.png"
+logo_width = "80px"
 logo_height = "32px"
-# if logo_webp set false, will not generate WEBP version of logo | default is true
 logo_webp = true
-# logo text will only show when logo is missing.
-logo_text = "Hugoplate"
-# navbar fixed to top
+logo_text = "ConQ"
 navbar_fixed = true
-# theme-mode
 theme_switcher = true
-theme_default = "dark" # available options [light/dark/system]
-# Main Sections
+theme_default = "light" # available options [light/dark/system]
 mainSections = ["blog"]
-# contact form action
 contact_form_action = "#" # contact form works with [https://airform.io/] or [https://formspree.io]
-# google tag manager, see https://developers.google.com/tag-manager/
 google_tag_manager = "" # example: G-XXXXXXXXXX
 google_adsense = ""     # example: ca-pub-xxxxxxxxxxxxxxxx
-# custom script on header, example: custom_script= "<script>console.log(\"Hello World\")</script>"
 custom_script = ""
-# copyright
 copyright = "Designed & Developed by [Zeon Studio](https://zeon.studio)"
 
-# Preloader
-# preloader module: https://github.com/gethugothemes/hugo-modules/tree/master/components/preloader
 [preloader]
 enable = false
 preloader = "" # use jpg, png, svg or gif format.
@@ -38,8 +23,8 @@ preloader = "" # use jpg, png, svg or gif format.
 # Navigation button
 [navigation_button]
 enable = true
-label = "get a quote"
-link = "contact"
+label = " Register "
+link = "register"
 
 # search
 # search module: https://github.com/gethugothemes/hugo-modules/tree/master/search
@@ -53,16 +38,14 @@ show_tags = true
 show_categories = true
 
 
-# seo meta data for OpenGraph / Twitter Card
 # seo module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/basic-seo
 [metadata]
-keywords = ["Boilerplate", "Hugo"]
-description = "Hugo & Tailwindcss Starter"
-author = "zeon.studio"
+keywords = ["conquiztador", "quiz","PES University","quiz","pes quiz","national quiz","national level quiz","school","school quiz"]
+description = "Website for Conquiztador"
+author = "Tech Team - ConQ"
 image = "images/og-image.png"
 
 
-# site verifications
 # verification module: https://github.com/gethugothemes/hugo-modules/tree/master/seo-tools/site-verifications
 [site_verification]
 google = ""   # Your verification code

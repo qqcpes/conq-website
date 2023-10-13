@@ -12,9 +12,10 @@ url = "about/"
 weight = 2
 
 [[main]]
-name = "Elements"
-url = "elements/"
+name = "The Team"
+url = "team/"
 weight = 3
+
 
 [[main]]
 weight = 4
@@ -23,28 +24,9 @@ hasChildren = true
 
 [[main]]
 parent = "Pages"
-name = "Blog"
-url = "blog/"
+name = "Highlights"
+url = "highlights/"
 
-[[main]]
-parent = "Pages"
-name = "Contact"
-url = "contact/"
-
-[[main]]
-parent = "Pages"
-name = "Authors"
-url = "authors/"
-
-[[main]]
-parent = "Pages"
-name = "Categories"
-url = "categories/"
-
-[[main]]
-parent = "Pages"
-name = "404 Page"
-url = "404/"
 
 
 # footer menu
