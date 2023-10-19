@@ -16,11 +16,15 @@ name = "The Team"
 url = "team/"
 weight = 3
 
+[[main]]
+name = "Gallery"
+url = "/gallery"
+weight = 4
 
 [[main]]
-name = "Highlights"
-url = "highlights/"
-
+name = "Rules"
+url = "/rules"
+weight = 5
 
 
 # footer menu
@@ -34,7 +38,4 @@ name = "Register"
 url = "register/"
 weight = 2
 
-[[footer]]
-name = "FAQ"
-url = "faqs/"
-weight = 3
+
