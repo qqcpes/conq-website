@@ -1,20 +1,21 @@
 #################### default parameters ################################
 favicon = "images/logo.png"
-logo = "images/logo.png"
-logo_darkmode = "images/logo.png"
-logo_width = "80px"
-logo_height = "32px"
+logo = "images/conqlogo-white.png"
+logo2 = "images/logo.png"
+logo_darkmode = "images/conqlogo.png"
+logo_width = "200"
+logo_height = "50"
 logo_webp = true
 logo_text = "ConQ"
 navbar_fixed = true
 theme_switcher = true
-theme_default = "light" # available options [light/dark/system]
+theme_default = "dark" # available options [light/dark/system]
 mainSections = ["blog"]
-contact_form_action = "#" # contact form works with [https://airform.io/] or [https://formspree.io]
+contact_form_action = "https://script.google.com/macros/s/AKfycbwB7SQatG9temOnCh3XXevK_0EPC1Vn3t2X1nVMXIoM4_xTRUch2-2i5H3Ch05R4rqF/exec"
 google_tag_manager = "" # example: G-XXXXXXXXXX
 google_adsense = ""     # example: ca-pub-xxxxxxxxxxxxxxxx
 custom_script = ""
-copyright = "Designed & Developed by [Zeon Studio](https://zeon.studio)"
+
 
 [preloader]
 enable = false
@@ -29,7 +30,7 @@ link = "register"
 # search
 # search module: https://github.com/gethugothemes/hugo-modules/tree/master/search
 [search]
-enable = true
+enable = false
 primary_color = "#121212"
 include_sections = ["blog"]
 show_image = true
@@ -69,10 +70,10 @@ sidebar = ["categories", "tags"]
 
 # google map
 [google_map]
-enable = false
+enable = true
 map_api_key = "AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU"
-map_latitude = "51.5223477"
-map_longitude = "-0.1622023"
+map_latitude = "12.935323953149556"
+map_longitude = "77.5360650666328"
 map_marker = "images/marker.png"
 
 

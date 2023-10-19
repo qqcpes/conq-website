@@ -11,13 +11,13 @@
       "text_color": {
         "default": "#444444",
         "dark": "#040404",
-        "light": "#717171"
+        "light": "#919191"
       }
     },
     "darkmode": {
       "theme_color": {
         "primary": "#fff",
-        "body": "#1c1c1c",
+        "body": "#000000",
         "border": "#3E3E3E",
         "theme_light": "#222222",
         "theme_dark": ""

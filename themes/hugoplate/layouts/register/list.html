@@ -1,120 +1,222 @@
 {{ define "main" }}
   {{ partial "page-header" . }}
 
-
   <section class="section-sm">
     <div class="container">
       <div class="row">
-        <div class="md:col-10 lg:col-6 mx-auto">
-          <form action="{{ site.Params.contact_form_action }}" method="POST">
-            <div class="mb-6">
-              <label for="name" class="form-label">
-                Full Name <span class="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="John Doe"
-                type="text" />
-            </div>
+        <div class="md:col-10 lg:col-8 mx-auto">
+          <h1>Team Registration Form</h1>
+        <form id="my-form" action="{{ site.Params.contact_form_action }}" method="POST">
+          <div class="mb-6">
+            <label for="school" class="form-label">
+              School Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="school"
+              name="school"
+              class="form-input"
+              placeholder="Delhi Public School"
+              type="text" required/>
+          </div>
+
+ 
+          <div class="mb-6">
+            <label for="address" class="form-label">
+              Address <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="address"
+              name="address"
+              class="form-input"
+              placeholder="Addresss here"
+              type="text" required/>
+          </div>
+
+          <div class="mb-6">
+            <label for="city" class="form-label">
+              City <span class="text-red-500">*</span> <small>(Choose the nearest zone)</small>
+            </label>
+            <select name="City" id="city" class="form-input required">
+              <option value="bangalore">Bangalore</option>
+              <option value="mangalore">Mangalore/Udupi</option>
+              <option value="mysore">Mysore</option>
+              <option value="chennai">Chennai</option>
+              <option value="coimbatore">Coimbatore</option>
+              <option value="ernakulam">Ernakulam/Kochi</option>
+              <option value="vizag">Vizag</option>
+              <option value="hyderabad">Hyderabad</option>
+            </select>
+          </div>
+
+      
+          <div class="mb-6">
+            <label for="phone" class="form-label">
+              Phone <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              class="form-input"
+              placeholder="Phone here"
+              type="text" required/>
+          </div>
+
+   
             <div class="mb-6">
               <label for="email" class="form-label">
-                Working Mail <span class="text-red-500">*</span>
+                Mail Id <span class="text-red-500">*</span>
               </label>
               <input
                 id="email"
-                name="email"
+                name="Email"
                 class="form-input"
                 placeholder="john.doe@email.com"
-                type="email" />
+                type="email" 
+                required />
             </div>
+ 
+
+            <div class="mb-6">
+              <label for="file" class="form-label">
+                Upload an Excel sheet / Photo of the list of students <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="file"
+                name="file"
+                class="form-input"
+                placeholder="Upload File"
+                type="file" 
+                 />
+              </div>
+              <h4> Or</h4>
+              <br/>
             <div class="mb-6">
               <label for="message" class="form-label">
-                Anything else? <span class="text-red-500">*</span>
+                Paste the contents in the box below <span class="text-red-500">*</span>
               </label>
               <textarea
                 id="message"
-                name="message"
+                name="Comments"
                 class="form-input"
-                placeholder="Message goes here..."
-                rows="8"></textarea>
+                placeholder=""
+                rows="4"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <h4> Or </h4>
+          <br/>
+          <div id="teams">
+            <!-- Team input fields will be added here dynamically -->
+        </div>
+        <button type="button" class="btn btn-outline-primary btn-sm" onclick="addTeam()">Add Team Manually + </button>
+        <br/>
+        <br/>
+            <button id = "submitbutton" type="submit" class="btn btn-primary ">Submit</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- google map -->
-  {{ with site.Params.google_map }}
-    {{ if .enable }}
-      <div
-        id="map"
-        style="height: 400px;"
-        data-latitude="{{ .map_latitude }}"
-        data-longitude="{{ .map_longitude }}"
-        data-marker="{{ .map_marker | relURL }}"
-        data-marker-name="{{ site.Title }}"></div>
-    {{ end }}
+
+  
+  <script>
+
+    window.addEventListener("load", function() {
+      const form = document.getElementById('my-form');
+
+      form.addEventListener("submit", function(e) {
+        if (form.hasAttribute("data-submitted")) {
+          e.preventDefault();
+          return; 
+        }
+        
+        form.submit.disabled = true;
+        form.setAttribute("data-submitted", "true"); 
+  
+        const data = new FormData(form);
+        const action = e.target.action;
+        const loadingMessage = document.createElement("div");
+        loadingMessage.innerHTML = "<h3> Submitting... Please wait. </h3>";
+        form.appendChild(loadingMessage);
+        
+        fetch(action, {
+          method: 'POST',
+          body: data,
+        })
+        .then(() => {
+          window.location.replace("/thankyou");
+        });
+      });
+    });
+  </script>
+
+<script>
+  function addTeam() {
+      const teamsDiv = document.getElementById("teams");
+      const teamCount = teamsDiv.getElementsByClassName("team-container").length + 1;
+
+      if (teamCount <= 10) {
+          const teamContainer = document.createElement("div");
+          teamContainer.className = "team-container";
+          teamContainer.innerHTML = `
+              <h2>Team ${teamCount}</h2>
+              <br/>
+              <button type="button" class="btn btn-outline-primary btn-sm" onclick="removeTeam(this)">Remove Team</button>
+              <br/>
+              <br/>
+
+              <div class="mb-6">
+                  <label for="team-name-${teamCount}" class="form-label">Team Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="team-name-${teamCount}" name="team-name-${teamCount}" class="form-input" placeholder="Team Name here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member1-name-${teamCount}" class="form-label">Member 1 Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="member1-name-${teamCount}" name="member1-name-${teamCount}" class="form-input" placeholder="Member 1 Name here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member1-class-${teamCount}" class="form-label">Member 1 Class <span class="text-red-500">*</span></label>
+                  <input type="text" id="member1-class-${teamCount}" name="member1-class-${teamCount}" class="form-input" placeholder="Member 1 Class here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member1-email-${teamCount}" class="form-label">Member 1 Email <span class="text-red-500">*</span></label>
+                  <input type="email" id="member1-email-${teamCount}" name="member1-email-${teamCount}" class="form-input" placeholder="Member 1 Email here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member1-contact-${teamCount}" class="form-label">Member 1 Contact <span class="text-red-500">*</span></label>
+                  <input type="text" id="member1-contact-${teamCount}" name="member1-contact-${teamCount}" class="form-input" placeholder="Member 1 Contact here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member2-name-${teamCount}" class="form-label">Member 2 Name <span class="text-red-500">*</span></label>
+                  <input type="text" id="member2-name-${teamCount}" name="member2-name-${teamCount}" class="form-input" placeholder="Member 2 Name here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member2-class-${teamCount}" class="form-label">Member 2 Class <span class="text-red-500">*</span></label>
+                  <input type="text" id="member2-class-${teamCount}" name="member2-class-${teamCount}" class="form-input" placeholder="Member 2 Class here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member2-email-${teamCount}" class="form-label">Member 2 Email <span class="text-red-500">*</span></label>
+                  <input type="email" id="member2-email-${teamCount}" name="member2-email-${teamCount}" class="form-input" placeholder="Member 2 Email here" required>
+              </div>
+              <div class="mb-6">
+                  <label for="member2-contact-${teamCount}" class="form-label">Member 2 Contact <span class="text-red-500">*</span></label>
+                  <input type="text" id="member2-contact-${teamCount}" name="member2-contact-${teamCount}" class="form-input" placeholder="Member 2 Contact here" required>
+              </div>
+          `;
+
+          teamsDiv.appendChild(teamContainer);
+      } else {
+          alert("You can't add more than 10 teams.");
+      }
+  }
+
+  function removeTeam(button) {
+      const teamDiv = button.parentElement;
+      const teamsDiv = document.getElementById("teams");
+      teamsDiv.removeChild(teamDiv);
+  }
+</script>
+
+
+
+
   {{ end }}
 
-  {{ with site.Params.subscription }}
-    {{ if .enable }}
-      <!-- subscription form -->
-      <form
-        action="{{ .mailchimp_form_action | safeURL }}"
-        method="post"
-        id="mc-embedded-subscribe-form"
-        novalidate="novalidate">
-        <div class="input-group w-75 mx-auto mb-3">
-          <input
-            type="email"
-            name="EMAIL"
-            placeholder="Email"
-            class="form-control required email mce_inline_error"
-            id="mce-EMAIL"
-            aria-required="true"
-            autocomplete="off"
-            required />
-          <button
-            class="input-group-text"
-            name="subscribe"
-            id="mc-embedded-subscribe">
-            {{ .button_label }}
-          </button>
-        </div>
-        <input
-          type="hidden"
-          name="EMAILTYPE"
-          id="mce-EMAILTYPE-0"
-          value="html" />
-        <div style="position:absolute;left:-5000px" aria-hidden="true">
-          <input type="text" name="{{ .name }}" tabindex="-1" />
-        </div>
-      </form>
-      <div id="mce-responses" class="clear">
-        <div
-          class="response text-white"
-          id="mce-error-response"
-          style="display:none"></div>
-        <div
-          class="response text-white"
-          id="mce-success-response"
-          style="display:none"></div>
-      </div>
-      <script
-        type="text/javascript"
-        src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-      <!-- /subscription form -->
-    {{ end }}
-  {{ end }}
-
-  {{ if site.Params.google_map.enable }}
-    {{ $gmap:= resources.Get "plugins/maps/google-map.js" }}
-    <script defer src="{{ $gmap.RelPermalink }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ site.Params.google_map.map_api_key }}&libraries=places"></script>
-  {{ end }}
-
-{{ end }}

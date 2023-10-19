@@ -18,12 +18,6 @@ weight = 3
 
 
 [[main]]
-weight = 4
-name = "Pages"
-hasChildren = true
-
-[[main]]
-parent = "Pages"
 name = "Highlights"
 url = "highlights/"
 
@@ -31,16 +25,16 @@ url = "highlights/"
 
 # footer menu
 [[footer]]
-name = "About"
+name = "About ConQ"
 url = "about/"
 weight = 1
 
 [[footer]]
-name = "Elements"
-url = "elements/"
+name = "Register"
+url = "register/"
 weight = 2
 
 [[footer]]
-name = "Privacy Policy"
-url = "privacy-policy/"
+name = "FAQ"
+url = "faqs/"
 weight = 3
